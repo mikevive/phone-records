@@ -42,7 +42,7 @@ class DefaultCli:
     def _get_command_executor(self) -> Callable[[str], None]:
         """Return a function that executes the selected command."""
         commands: Dict[str, Callable[[], None]] = {
-            "1": self._get_first_call,
+            "0": self._execute_task_0,
             "h": self._print_instructions,
             "exit": self._deactivate_cli,
         }
@@ -62,7 +62,7 @@ class DefaultCli:
         """Print prompt to capture the command selected by the user."""
         print("records>", end=" ")
 
-    def _get_first_call(self) -> None:
+    def _execute_task_0(self) -> None:
         """Return the first call recorded."""
         first_call_dto: CallDto = self._call_service.get_first()
 
@@ -76,7 +76,7 @@ class DefaultCli:
         print("Phone Records CLI:")
         print("An Application to manage phone records.", end="\n\n")
         print("Commands:")
-        print("1                Get first call record")
+        print("0                Task 0 - Get first text record and last call")
         print("help             Help")
         print("exit             Quit")
 
